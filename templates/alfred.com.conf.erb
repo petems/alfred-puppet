@@ -1,0 +1,22 @@
+server {
+  listen                *:80;
+  server_name           alfred.com;
+
+  proxy_set_header        Host $http_host;
+  index  index.html index.htm index.php;
+
+  access_log            /var/log/nginx/alfred.com.access.log;
+  error_log             /var/log/nginx/alfred.com.error.log;
+
+  location / {
+    proxy_pass            http://alfred_app;
+    proxy_read_timeout    90;
+    proxy_connect_timeout 90;
+    proxy_redirect        http://alfred_app:3000/ http://localhost:80/;
+
+    proxy_set_header      Host $http_host;
+    proxy_set_header      X-Real-IP $remote_addr;
+    proxy_set_header      X-Forwarded-For $proxy_add_x_forwarded_for;
+
+  }
+}
