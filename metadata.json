@@ -1,12 +1,12 @@
 {
   "name": "nicopaez-alfred",
-  "version": "0.2.0",
+  "version": "0.4.1",
   "author": "nicopaez",
-  "summary": null,
+  "summary": "Puppet module to provision Alfred instances",
   "license": "Apache 2.0",
-  "source": "",
-  "project_page": null,
-  "issues_url": null,
+  "source": "https://github.com/nicopaez/alfred-puppet",
+  "project_page": "https://github.com/nicopaez/alfred-puppet",
+  "issues_url": "https://github.com/nicopaez/alfred-puppet/issues",
     "dependencies": [
       {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0"},
       {"name": "jfryman/nginx", "version_requirement": ">= 0.2.1"},
