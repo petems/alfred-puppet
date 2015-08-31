@@ -1,4 +1,12 @@
-class alfred ($db_user = 'alfred', $db_pass = 'mypassword', $config_branch = 'master', $ssh_key = 'undefined') {
+class alfred (
+	$db_user = 'alfred',
+	$db_pass = 'mypassword',
+	$code_repository = $::alfred::params::code_repository,
+	$code_branch = $::alfred::params::code_branch,
+	$conf_repository = undef,
+	$config_branch = $::alfred::params::conf_branch,
+	$ssh_key = undef
+) inherits ::alfred::params {
 
 	class apt_update {
   	exec { 'do_apt_update':
