@@ -14,7 +14,7 @@ class alfred::app {
 
   file { '/var/www/alfred/.env':
     ensure => present,
-    content => template("alfred/env.erb")
+    content => template('alfred/env.erb')
   }
 
   file {
@@ -23,7 +23,7 @@ class alfred::app {
       path => '/home/deployer/install_app.sh',
       owner => 'deployer',
       group => 'deployer',
-      source => "puppet:///modules/alfred/install-app.sh",
+      source => 'puppet:///modules/alfred/install-app.sh',
       mode  => '0744',
   }
 
@@ -47,7 +47,7 @@ class alfred::app {
 
   file { '/etc/init/alfred.conf':
     ensure => present,
-    content => template("alfred/alfred.conf.erb")
+    content => template('alfred/alfred.conf.erb')
   }
   
 }

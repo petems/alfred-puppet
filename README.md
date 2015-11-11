@@ -19,6 +19,11 @@ The applicacion is installed as a service with Upstart
 The application is installed under __/var/www/alfred__.
 
 
+## Running acceptance test
+
+bundle exec rspec spec/acceptance
+
+
 ## Usage with Vagrant
 
 In the _vagrant_ directory there is a vagrant configuration ready to use, just go to that directory en execute _vagrant up_.
