@@ -1,6 +1,7 @@
 require 'spec_helper_acceptance'
 
 describe 'alfred::ruby class' do
+
   describe 'installation' do
 
     it 'should install 1.9.3' do
