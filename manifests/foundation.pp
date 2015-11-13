@@ -3,8 +3,8 @@ class alfred::foundation {
   include git
 
   user { 'deployer':
-    ensure => 'present',
-    home => '/home/deployer',
+    ensure     => 'present',
+    home       => '/home/deployer',
     managehome => true,
   }
 
@@ -17,11 +17,11 @@ class alfred::foundation {
   postgresql::server::db { 'alfred':
     user     => $alfred::db_user,
     password => postgresql_password($alfred::db_user, $alfred::db_pass),
-    before => Package['git'],
+    before   => Package['git'],
   }
 
   postgresql::server::role { "${alfred::db_user}":
-    superuser  => true,
+    superuser     => true,
     password_hash => postgresql_password($alfred::db_user, $alfred::db_pass),
   }
 
@@ -37,7 +37,7 @@ class alfred::foundation {
     members => ['127.0.0.1:3000'],
   }->
   file { '/etc/nginx/sites-available/alfred.com.conf':
-    ensure => present,
+    ensure  => present,
     content => template('alfred/alfred.com.conf.erb')
   }->
   file { '/etc/nginx/sites-enabled/alfred.com.conf':

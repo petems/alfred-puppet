@@ -10,8 +10,8 @@ class alfred (
 
   class apt_update {
     exec { 'do_apt_update':
-      command     => '/usr/bin/apt-get update',
-      timeout     => 300,
+      command => '/usr/bin/apt-get update',
+      timeout => 300,
     }
   }
 

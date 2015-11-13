@@ -1,7 +1,7 @@
 class alfred::services {
 
   service { 'alfred':
-    ensure => running,
+    ensure   => running,
     provider => 'upstart',
   }
 
