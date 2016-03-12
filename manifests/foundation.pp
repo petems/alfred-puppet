@@ -2,11 +2,11 @@ class alfred::foundation {
 
   include git
 
-  user { 'deployer':
-    ensure     => 'present',
-    home       => '/home/deployer',
-    managehome => true,
-  }
+  #user { 'deployer':
+  #  ensure     => 'present',
+  #  home       => '/home/deployer',
+  #  managehome => true,
+  #}
 
   class { 'postgresql::globals':
     manage_package_repo => true,

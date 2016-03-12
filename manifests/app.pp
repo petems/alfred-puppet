@@ -5,6 +5,11 @@ class alfred::app {
     owner  => 'deployer',
   }
 
+  file { '/home/deployer':
+    ensure => directory,
+    owner  => 'deployer',
+  }
+
   exec { 'clone-repo':
     command   => 'git clone https://github.com/fiuba/alfred.git /var/www/alfred',
     path      =>  [ '/bin', '/usr/bin', '/usr/local/bin' ],
@@ -19,12 +24,13 @@ class alfred::app {
 
   file {
     'installer_app.sh':
-      ensure => 'present',
-      path   => '/home/deployer/install_app.sh',
-      owner  => 'deployer',
-      group  => 'deployer',
-      source => 'puppet:///modules/alfred/install-app.sh',
-      mode   => '0744',
+      ensure  => 'present',
+      path    => '/home/deployer/install_app.sh',
+      owner   => 'deployer',
+      group   => 'deployer',
+      source  => 'puppet:///modules/alfred/install-app.sh',
+      mode    => '0744',
+      require =>  File['/home/deployer'],
   }
 
   exec { 'install-app':

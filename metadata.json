@@ -1,6 +1,6 @@
 {
   "name": "nicopaez-alfred",
-  "version": "0.5.4",
+  "version": "0.7.0",
   "author": "nicopaez",
   "summary": "Puppet module to provision Alfred instances",
   "license": "Apache 2.0",
