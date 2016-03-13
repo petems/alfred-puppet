@@ -20,7 +20,7 @@ class alfred::foundation {
     before   => Package['git'],
   }
 
-  postgresql::server::role { "${alfred::db_user}":
+  postgresql::server::role { $alfred::db_user:
     superuser     => true,
     password_hash => postgresql_password($alfred::db_user, $alfred::db_pass),
   }
