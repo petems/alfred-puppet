@@ -1,5 +1,9 @@
 # Alfred Puppet Module
 
+[![Build Status](https://travis-ci.org/nicopaez/alfred-puppet.svg?branch=master)](https://travis-ci.org/nicopaez/alfred-puppet)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/nicopaez/alfred.svg)](https://forge.puppetlabs.com/nicopaez/alfred)
+[![Puppet Forge](https://img.shields.io/puppetforge/f/nicopaez/alfred.svg)](https://forge.puppetlabs.com/nicopaez/alfred)
+
 ## Overview
 
 This module allows to setup a full production ready Alfred application instance.
