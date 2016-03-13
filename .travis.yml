@@ -1,6 +1,8 @@
 language: ruby
 rvm:
   - '2.1.5'
+before_install:
+  - rm -f Gemfile.lock
 script: "bundle exec rspec spec/acceptance"
 branches:
   only:
