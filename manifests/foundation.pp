@@ -31,18 +31,23 @@ class alfred::foundation {
     ensure => 'installed'
   }
 
-  class { 'nginx': }
-  
+  class { 'nginx': 
+  }
+
   nginx::resource::upstream { 'alfred_app':
     members => ['127.0.0.1:3000'],
-  }->
+  }
+
   file { '/etc/nginx/sites-available/alfred.com.conf':
     ensure  => present,
-    content => template('alfred/alfred.com.conf.erb')
-  }->
+    content => template('alfred/alfred.com.conf.erb'),
+    require => Class['nginx']
+  }
+
   file { '/etc/nginx/sites-enabled/alfred.com.conf':
     ensure => 'link',
     target => '/etc/nginx/sites-available/alfred.com.conf',
+    require => Class['nginx']
   }
 
 }
