@@ -13,11 +13,11 @@ describe 'alfred class' do
           EOS
     result = apply_manifest(pp)
     expect(@result.exit_code).to eq 0
-    shell("curl http://alfred-production.herokuapp.com/login | grep Alfred", :acceptable_exit_codes => 0)
   end
 
   #describe port(80) do
   #  it { should be_listening }
+  #  shell("curl http://localhost/login | grep Alfred", :acceptable_exit_codes => 0)
   #end
 
 end
