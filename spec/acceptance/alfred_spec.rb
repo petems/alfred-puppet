@@ -15,9 +15,9 @@ describe 'alfred class' do
     expect(@result.exit_code).to eq 0
   end
 
-  #describe port(80) do
-  #  it { should be_listening }
-  #  shell("curl http://localhost/login | grep Alfred", :acceptable_exit_codes => 0)
-  #end
-
+  describe service('nginx') do
+    it { is_expected.to be_running }
+    it { is_expected.to be_enabled }
+  end
+  
 end
