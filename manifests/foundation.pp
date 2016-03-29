@@ -36,6 +36,7 @@ class alfred::foundation {
 
   nginx::resource::upstream { 'alfred_app':
     members => ['127.0.0.1:3000'],
+    require => File['/etc/nginx/conf.d'] # this line should not be required because is part of nginx installation
   }
 
   file { '/etc/nginx/sites-available/alfred.com.conf':
