@@ -5,8 +5,8 @@ describe 'alfred class' do
   it 'should run without errors' do
     pp = <<-EOS
             class { 'alfred':
-              db_user       =>  'adnub',
-              db_pass       => 'jEcr65aPhufr',
+              db_user       => 'alfred',
+              db_pass       => 'mypassword',
               config_branch => 'production',
               ssh_key       => 'xxxxx'
             }
@@ -22,6 +22,17 @@ describe 'alfred class' do
 
   describe file('/var/www/alfred') do
     it { should be_directory }
+  end
+
+  describe file('/etc/init/alfred.conf') do
+    it { should exist }
+  end
+
+  describe 'alfred app' do
+    it 'should be running on port 80' do
+      sleep 5
+      shell("curl http://localhost/login | grep Alfred", :acceptable_exit_codes => 0)
+    end
   end
 
 end

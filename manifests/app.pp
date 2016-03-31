@@ -14,8 +14,12 @@ class alfred::app {
     command   => 'git clone https://github.com/fiuba/alfred.git /var/www/alfred',
     path      =>  [ '/bin', '/usr/bin', '/usr/local/bin' ],
     logoutput => true,
-    user      => 'deployer',
-  }
+    #user      => 'deployer',
+  }->
+  file { '/var/www/alfred':
+    ensure => directory,
+    owner  => 'deployer',
+  }  
 
   file { '/var/www/alfred/.env':
     ensure  => present,
