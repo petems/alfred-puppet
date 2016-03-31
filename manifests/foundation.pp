@@ -42,13 +42,12 @@ class alfred::foundation {
   file { '/etc/nginx/sites-available/alfred.com.conf':
     ensure  => present,
     content => template('alfred/alfred.com.conf.erb'),
-    require => Class['nginx']
   }
 
   file { '/etc/nginx/sites-enabled/alfred.com.conf':
     ensure => 'link',
     target => '/etc/nginx/sites-available/alfred.com.conf',
-    require => Class['nginx']
+    notify => Service['nginx']
   }
 
 }

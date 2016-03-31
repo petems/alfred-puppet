@@ -17,7 +17,10 @@ describe 'alfred class' do
 
   describe service('nginx') do
     it { is_expected.to be_running }
-    it { is_expected.to be_enabled }
+  end
+
+  describe service('alfred') do
+    it { is_expected.to be_running }
   end
 
   describe file('/var/www/alfred') do
@@ -33,6 +36,12 @@ describe 'alfred class' do
       sleep 5
       shell("curl http://localhost/login | grep Alfred", :acceptable_exit_codes => 0)
     end
+
+    it 'should be running on port 3000' do
+      sleep 5
+      shell("curl http://localhost:3000/login | grep Alfred", :acceptable_exit_codes => 0)
+    end
+
   end
 
 end
