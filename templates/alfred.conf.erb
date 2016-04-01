@@ -19,6 +19,8 @@
 
 description "Alfred Background Worker"
 
+start on started network-services
+stop on runlevel [016]
 # no "start on", we don't want to automatically start
 #stop on (stopping puma-manager or runlevel [06])
 

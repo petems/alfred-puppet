@@ -17,10 +17,12 @@ describe 'alfred class' do
 
   describe service('nginx') do
     it { is_expected.to be_running }
+    it { is_expected.to be_enabled }
   end
 
   describe service('alfred') do
     it { is_expected.to be_running }
+    it { is_expected.to be_enabled }
   end
 
   describe file('/var/www/alfred') do
