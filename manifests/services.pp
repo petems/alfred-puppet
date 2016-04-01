@@ -4,6 +4,7 @@ class alfred::services {
     ensure   => running,
     enable => true,
     provider => 'upstart',
+    require => File['/etc/init/alfred.conf']
   }
 
 }
