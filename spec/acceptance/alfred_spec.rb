@@ -11,7 +11,7 @@ describe 'alfred class' do
               ssh_key       => 'xxxxx'
             }
           EOS
-    result = apply_manifest(pp)
+    result = apply_manifest(pp, :trace => true, :debug => true)
     expect(@result.exit_code).to eq 0
   end
 
@@ -19,5 +19,5 @@ describe 'alfred class' do
     it { is_expected.to be_running }
     it { is_expected.to be_enabled }
   end
-  
+
 end
