@@ -10,4 +10,4 @@ script:
   - bundle exec rspec spec/acceptance
 
 env:
-  - PUPPET_VERSION="4.3.2" BEAKER_set="ci"
+  - PUPPET_VERSION="4.4.0" BEAKER_set="ci"
