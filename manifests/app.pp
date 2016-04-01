@@ -10,11 +10,11 @@ class alfred::app {
     owner  => 'deployer',
   }
 
-  exec { 'clone-repo':
-    command   => 'git clone https://github.com/fiuba/alfred.git /var/www/alfred',
-    path      =>  [ '/bin', '/usr/bin', '/usr/local/bin' ],
-    logoutput => true,
-    user      => 'deployer',
+  vcsrepo { '/var/www/alfred':
+    ensure   => present,
+    source   => 'https://github.com/fiuba/alfred.git',
+    provider => git,
+    user     => 'deployer',
   }
 
   file { '/var/www/alfred/.env':
