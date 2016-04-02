@@ -1,27 +1,27 @@
 class alfred::app {
-  
+
   file { '/var/www':
     ensure => directory,
     owner  => 'deployer',
   }
-
+  ->
   file { '/home/deployer':
     ensure => directory,
     owner  => 'deployer',
   }
-
+  ->
   vcsrepo { '/var/www/alfred':
     ensure   => present,
     source   => 'https://github.com/fiuba/alfred.git',
     provider => git,
     user     => 'deployer',
   }
-
+  ->
   file { '/var/www/alfred/.env':
     ensure  => present,
     content => template('alfred/env.erb')
   }
-
+  ->
   file {
     'installer_app.sh':
       ensure  => 'present',
@@ -32,7 +32,7 @@ class alfred::app {
       mode    => '0744',
       require =>  File['/home/deployer'],
   }
-
+  ->
   exec { 'install-app':
     command   => '/home/deployer/install_app.sh',
     path      =>  [ '/bin', '/usr/bin', '/usr/local/bin' ],
@@ -41,7 +41,7 @@ class alfred::app {
     timeout   => 1800,
     require   => [File['/var/www/alfred/.env'],File['installer_app.sh']],
   }
-
+  ->
   file {
     'temp_directory':
       ensure => 'directory',
@@ -50,10 +50,10 @@ class alfred::app {
       group  => 'alfred',
       mode   => 'o+w',
   }
-
+  ->
   file { '/etc/init/alfred.conf':
     ensure  => present,
     content => template('alfred/alfred.conf.erb')
   }
-  
+
 }
