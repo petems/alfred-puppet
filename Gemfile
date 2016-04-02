@@ -8,6 +8,7 @@ gem 'puppet', puppetversion, :require => false
 group :development, :test do
   gem 'puppetlabs_spec_helper', '>= 0.1.0'
   gem 'puppet-lint', '>= 0.3.2'
+  gem 'pry'
 end
 
 group :system_tests do
