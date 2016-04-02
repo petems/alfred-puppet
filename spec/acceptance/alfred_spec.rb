@@ -11,8 +11,7 @@ describe 'alfred class' do
               ssh_key       => 'xxxxx'
             }
           EOS
-    result = apply_manifest(pp, :trace => true, :debug => true)
-    expect(@result.exit_code).to eq 0
+    result = apply_manifest(pp, :trace => true, :debug => true, :catch_failures => true)
   end
 
   describe service('nginx') do
